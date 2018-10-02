@@ -8,7 +8,6 @@ To access Github, we need to create a personal access token.
 
 Access [https://github.com/settings/tokens/new](https://github.com/settings/tokens/new) to generate a new personal token.
 
-```
 
 We need to set the following 3 scopes:
 
