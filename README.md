@@ -63,7 +63,7 @@ At this point, you should be able to see a new commit in your repository, congra
 The next step is, we want to automate the job. You can add the following line to your crontab (`crontab -e`):
 
 ```
-0 21 * * * GITHUB_USER=[YOUR_USERNAME] GITHUB_TOKEN=[YOUR_GENERATED_TOKEN] $HOME/github-profile-visualizer/script.sh &>/dev/null
+0 10 * * * GITHUB_USER=[YOUR_USERNAME] GITHUB_TOKEN=[YOUR_GENERATED_TOKEN] $HOME/github-profile-visualizer/script.sh &>/dev/null
 ```
 
 Feel free to adjust the parameter above (schedule, source path, etc) based on your configuration.
