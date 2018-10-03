@@ -51,7 +51,7 @@ For other optional configurations, consult to [whiteinge/ok.sh#configuration](ht
 Assuming your repository clone is located at `$HOME`, then you can try running `script.sh` via:
 
 ```
-$ GITHUB_USER=[YOUR_USERNAME] $HOME/github-profile-visualizer/script.sh
+$ GITHUB_USER=[YOUR_USERNAME] GITHUB_TOKEN=[YOUR_TOKEN] $HOME/github-profile-visualizer/script.sh
 ```
 
 ## License
