@@ -37,6 +37,11 @@ machine api.github.com
 machine uploads.github.com
     login <username>
     password <token>
+
+# If you don't have any credentials configured on git, you need the following lines
+machine github.com
+    login <username>
+    password <token>
 ```
 
 For other optional configurations, consult to [whiteinge/ok.sh#configuration](https://github.com/whiteinge/ok.sh#configuration).
