@@ -1,6 +1,8 @@
 # Github Profile Visualizer
 
-Work in Progress.
+Visualize Github profile growth (followers, num repo, etc) with daily cron and Github Pages.
+
+Available via Github Pages - [https://freedomofkeima.github.io/github-profile-visualizer/](https://freedomofkeima.github.io/github-profile-visualizer/).
 
 ## Github Personal Access Token
 
@@ -53,6 +55,18 @@ Assuming your repository clone is located at `$HOME`, then you can try running `
 ```
 $ GITHUB_USER=[YOUR_USERNAME] GITHUB_TOKEN=[YOUR_TOKEN] $HOME/github-profile-visualizer/script.sh
 ```
+
+## Adding cron job
+
+At this point, you should be able to see a new commit in your repository, congrats!
+
+The next step is, we want to automate the job. You can add the following line to your crontab (`crontab -e`):
+
+```
+0 21 * * * GITHUB_USER=[YOUR_USERNAME] GITHUB_TOKEN=[YOUR_GENERATED_TOKEN] $HOME/github-profile-visualizer/script.sh &>/dev/null
+```
+
+Feel free to adjust the parameter above (schedule, source path, etc) based on your configuration.
 
 ## License
 
