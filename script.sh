@@ -26,17 +26,17 @@ pushd $CURRENT_DIR
   # Push
   curl --user ${GITHUB_USER}:${GITHUB_TOKEN}                     \
        --request POST                                            \
-       --data '{                                                 \
-         "message": "'"$(git show --format="%s" --no-patch)"'",  \
-         "author": {                                             \
-           "name": "'"$(git show --format="%an" --no-patch)"'",  \
-           "email": "'"$(git show --format="%ae" --no-patch)"'", \
-           "date": "'"$(git show --format="%aI" --no-patch)"'"   \
-         },                                                      \
-         "parents": [                                            \
-           "'"$(git show --format="%P" --no-patch)"'"            \
-         ],                                                      \
-         "tree": "'"$(git show --format="%H" --no-patch)"'"      \
+       --data '{
+         "message": "'"$(git show --format="%s" --no-patch)"'",
+         "author": {
+           "name": "'"$(git show --format="%an" --no-patch)"'",
+           "email": "'"$(git show --format="%ae" --no-patch)"'",
+           "date": "'"$(git show --format="%aI" --no-patch)"'"
+         },
+         "parents": [
+           "'"$(git show --format="%P" --no-patch)"'"
+         ],
+         "tree": "'"$(git show --format="%H" --no-patch)"'"
        }'                                                        \
        https://api.github.com/repos/${GITHUB_USER}/github-profile-visualizer/git/commits 
 popd
