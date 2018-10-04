@@ -4,6 +4,12 @@ Visualize Github profile growth (followers, num repo, etc) with daily cron and G
 
 Available via Github Pages - [https://freedomofkeima.github.io/github-profile-visualizer/](https://freedomofkeima.github.io/github-profile-visualizer/).
 
+![](screenshot.png)
+
+## Github Pages
+
+Github provides a free, static page websites via [Github Pages](https://pages.github.com/). In order to start using it, you can access "Settings tab", then select the "master branch" source and click on the "Save" button. Your page is ready on `https://[GITHUB_USERNAME].github.io/github-profile-visualizer`.
+
 ## Github Personal Access Token
 
 To access Github, we need to create a personal access token.
