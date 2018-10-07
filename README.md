@@ -11,7 +11,7 @@ Available via Github Pages - [https://freedomofkeima.github.io/github-profile-vi
 Github provides a free, static page websites via [Github Pages](https://pages.github.com/). In order to start using it, you need to:
 
 * Fork this repo.
-* Open your repo setting and scroll down to Github Pages. Change your `source` and save. Your setup should look like bellow.
+* Open your repo setting and scroll down to Github Pages. Change your `source` and save. Your setup should look like below.
 
 ![Enable github pages for this project](img/pages.png)
 
@@ -39,7 +39,7 @@ We need to set the following 3 scopes:
 
 ![Scope](img/scope.png)
 
-`public_repo` is used to allow us commiting daily cron changes back to the repository, while `repo:status` is used to get number of repositories, and `read:user` is used to get number of followers & followings.
+`public_repo` is used to allow us committing daily cron changes back to the repository, while `repo:status` is used to get number of repositories, and `read:user` is used to get number of followers & followings.
 
 ## ok.sh
 
