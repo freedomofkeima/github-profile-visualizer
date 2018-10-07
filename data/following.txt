@@ -1,3 +1,1 @@
 Date,Following
-
-2018-10-07,0

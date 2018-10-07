@@ -9,15 +9,15 @@ pushd $CURRENT_DIR
   num_repo=$(./ok.sh -j list_repos ${GITHUB_USER} | grep "full_name" | wc -l | tr -d ' ')
 
   #Get number of followers
-  num_followers=$(./ok.sh -j list_followers | grep "followers_url" | wc -l | tr -d ' ')
+  num_followers=$(./ok.sh -j list_followers ${GITHUB_USER} | grep "followers_url" | wc -l | tr -d ' ')
 
   # Get number of following
-  num_following=$(./ok.sh -j list_following | grep "following_url" | wc -l | tr -d ' ')
+  num_following=$(./ok.sh -j list_following ${GITHUB_USER}  | grep "following_url" | wc -l | tr -d ' ')
 
   # Append to file
-  echo "${CURRENT_DATE},${num_repo}" >> num_repo.txt
-  echo "${CURRENT_DATE},${num_followers}" >> follower.txt
-  echo "${CURRENT_DATE},${num_following}" >> following.txt
+  echo "${CURRENT_DATE},${num_repo}" >> data/num_repo.txt
+  echo "${CURRENT_DATE},${num_followers}" >> data/follower.txt
+  echo "${CURRENT_DATE},${num_following}" >> data/following.txt
 
   # Commit
   git add num_repo.txt follower.txt following.txt

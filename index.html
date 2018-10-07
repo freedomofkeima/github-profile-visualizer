@@ -26,7 +26,8 @@
 	<body>
 	    <a href="https://github.com/freedomofkeima/github-profile-visualizer"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
 	    <div>
-			<h1 class="centered">Github Profile Visualizer (<a href="https://github.com/freedomofkeima">freedomofkeima</a>)</h1>
+			<!-- Dynamically change title for page owner -->
+			<h1 class="centered" id="page-title"></h1>
 			<p class="centered">By executing a daily cron on the server-side, we can keep track of various metrics: number of followers, number of following, and number of repositories.</p>
 			
 			<div id="follower" class="centered"></div><br/>
@@ -37,17 +38,20 @@
 	    <!-- Scripts -->
 	    <script src="https://cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/dygraph.min.js"></script>
 		<script>
-		    followerG = new Dygraph(document.getElementById("follower"), "follower.txt", {
+			username = window.location.host.split('.')[0]
+			document.getElementById("page-title").innerHTML = 'Github Profile Visualizer (<a href="https://github.com/' + username + '">'+ username +'</a>)'
+
+		    followerG = new Dygraph(document.getElementById("follower"), "data/follower.txt", {
 			    legend: 'always',
 				title: 'Github Follower',
 				fillGraph: true,
 			});
-			followingG =  new Dygraph(document.getElementById("following"), "following.txt", {
+			followingG =  new Dygraph(document.getElementById("following"), "data/following.txt", {
 			    legend: 'always',
 				title: 'Github Following',
 				fillGraph: true,
 			});
-			numRepoG =  new Dygraph(document.getElementById("num_repo"), "num_repo.txt", {
+			numRepoG =  new Dygraph(document.getElementById("num_repo"), "data/num_repo.txt", {
 			    legend: 'always',
 				title: 'Github Number of Repository',
 				fillGraph: true,

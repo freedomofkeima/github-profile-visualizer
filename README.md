@@ -4,6 +4,15 @@ Visualize Github profile growth (followers, num repo, etc) with daily cron and G
 
 Available via Github Pages - [https://freedomofkeima.github.io/github-profile-visualizer/](https://freedomofkeima.github.io/github-profile-visualizer/).
 
+## Make Your Own
+
+* Fork this repo.
+* Open your repo setting and scroll down to Github Pages. Change your `source` and save.
+![Enable github pages for this project](pages.png)
+* Clone your repo to your computer and run `sh init.sh github-username github-token`. Read bellow to get your token.
+* Check if it works, visit `https://[your-username].github.io/github-profile-visualizer/`.
+
+
 ## Github Personal Access Token
 
 To access Github, we need to create a personal access token.
@@ -20,6 +29,8 @@ We need to set the following 3 scopes:
 	"read:user"
 ]
 ```
+
+![Scope](img/scope.png)
 
 `public_repo` is used to allow us commiting daily cron changes back to the repository, while `repo:status` is used to get number of repositories, and `read:user` is used to get number of followers & followings.
 
