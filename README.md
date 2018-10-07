@@ -6,9 +6,19 @@ Available via Github Pages - [https://freedomofkeima.github.io/github-profile-vi
 
 ![](screenshot.png)
 
-## Github Pages
+## Make Your Own Github Pages
 
-Github provides a free, static page websites via [Github Pages](https://pages.github.com/). In order to start using it, you can access "Settings tab", then select the "master branch" source and click on the "Save" button. Your page is ready on `https://[GITHUB_USERNAME].github.io/github-profile-visualizer`.
+Github provides a free, static page websites via [Github Pages](https://pages.github.com/). In order to start using it, you need to:
+
+* Fork this repo.
+* Open your repo setting and scroll down to Github Pages. Change your `source` and save. Your setup should look like bellow.
+
+![Enable github pages for this project](img/pages.png)
+
+* Clone your repo to your computer and run `sh init.sh github-username github-token`. Read bellow to get your token.
+* Run `sh script.sh` to update and upload your data. Try cron job bello to automatically update everyday.
+* Check if it works, visit `https://[GITHUB_USERNAME].github.io/github-profile-visualizer/`.
+
 
 ## Github Personal Access Token
 
@@ -26,6 +36,8 @@ We need to set the following 3 scopes:
 	"read:user"
 ]
 ```
+
+![Scope](img/scope.png)
 
 `public_repo` is used to allow us commiting daily cron changes back to the repository, while `repo:status` is used to get number of repositories, and `read:user` is used to get number of followers & followings.
 
