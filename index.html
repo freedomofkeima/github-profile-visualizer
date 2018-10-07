@@ -39,7 +39,7 @@
 	    <script src="https://cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/dygraph.min.js"></script>
 		<script>
 			url = window.location.href
-			username = url.split(".")[0]
+			username = window.location.host.split(".")[0]
 			document.getElementById("page-title").innerHTML = 'Github Profile Visualizer (<a href="https://github.com/' + username + '">'+ username +'</a>)'
 
 		    followerG = new Dygraph(document.getElementById("follower"), url+"/data/follower.txt", {
