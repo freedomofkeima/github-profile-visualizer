@@ -4,7 +4,7 @@ Visualize Github profile growth (followers, num repo, etc) with daily cron and G
 
 Available via Github Pages - [https://freedomofkeima.github.io/github-profile-visualizer/](https://freedomofkeima.github.io/github-profile-visualizer/).
 
-![](screenshot.png)
+![](img/screenshot.png)
 
 ## Make Your Own Github Pages
 
