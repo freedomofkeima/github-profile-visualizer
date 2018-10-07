@@ -3,6 +3,7 @@
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 CURRENT_DATE=`date +%Y-%m-%d`
 COMMIT_MESSAGE="Profile status at ${CURRENT_DATE}"
+source data/profile.txt
 
 pushd $CURRENT_DIR
   # Get number of repositories
@@ -20,7 +21,7 @@ pushd $CURRENT_DIR
   echo "${CURRENT_DATE},${num_following}" >> data/following.txt
 
   # Commit
-  git add num_repo.txt follower.txt following.txt
+  git add data/*
   git commit -m "${COMMIT_MESSAGE}"
   git push origin master 
 popd
