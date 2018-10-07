@@ -12,6 +12,7 @@ Available via Github Pages - [https://freedomofkeima.github.io/github-profile-vi
 ![Enable github pages for this project](img/pages.png)
 
 * Clone your repo to your computer and run `sh init.sh github-username github-token`. Read bellow to get your token.
+* Run `sh script.sh` to update and upload your data. Try cron job bello to automatically update everyday.
 * Check if it works, visit `https://[your-username].github.io/github-profile-visualizer/`.
 
 
