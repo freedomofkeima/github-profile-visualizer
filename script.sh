@@ -21,7 +21,7 @@ pushd $CURRENT_DIR
   echo "${CURRENT_DATE},${num_following}" >> data/following.txt
 
   # Commit
-  git add data/*
+  git add data/
   git commit -m "${COMMIT_MESSAGE}"
   git push origin master 
 popd
