@@ -15,8 +15,8 @@ Github provides a free, static page websites via [Github Pages](https://pages.gi
 
 ![Enable github pages for this project](img/pages.png)
 
-* Clone your repo to your computer and run `sh init.sh github-username github-token`. Read bellow to get your token.
-* Run `sh script.sh` to update and upload your data. Try cron job bello to automatically update everyday.
+* Clone your repo to your computer and run `sh init.sh GITHUB_USERNAME GITHUB_TOKEN`. Read the guide below on how to generate your token.
+* Run `sh script.sh` (or `./script.sh`) to update and upload your data. Add cron job integration (explained below) to automatically update your repository everyday.
 * Check if it works, visit `https://[GITHUB_USERNAME].github.io/github-profile-visualizer/`.
 
 
@@ -47,28 +47,13 @@ We need to set the following 3 scopes:
 
 As of October 3, 2018, `ok.sh` doesn't support `list_followers` and `list_following`. Therefore, `ok.sh` in this repository is a freezed version with modifications.
 
-You need to use "Personal Access Token" that you have retrieved above in `$HOME/.netrc`. Ensure that the permission is restricted with `chmod 600 ~/.netrc`!
-
-```
-machine api.github.com
-    login <username>
-    password <token>
-
-machine uploads.github.com
-    login <username>
-    password <token>
-
-# If you don't have any credentials configured on git, you need the following lines
-machine github.com
-    login <username>
-    password <token>
-```
+We will store "Personal Access Token" that you have retrieved above in `$HOME/.netrc`. See `init.sh` for details implementation.
 
 For other optional configurations, consult to [whiteinge/ok.sh#configuration](https://github.com/whiteinge/ok.sh#configuration).
 
 ## script.sh
 
-Assuming your repository clone is located at `$HOME`, then you can try running `script.sh` via:
+Assuming your repository clone is located at `$HOME`, you can try running `script.sh` manually via:
 
 ```
 $ GITHUB_USER=[YOUR_USERNAME] GITHUB_TOKEN=[YOUR_TOKEN] $HOME/github-profile-visualizer/script.sh
@@ -85,6 +70,11 @@ The next step is, we want to automate the job. You can add the following line to
 ```
 
 Feel free to adjust the parameter above (schedule, source path, etc) based on your configuration.
+
+## Contributors
+
+- [Iskandar Setiadi](https://github.com/freedomofkeima)
+- [Tegar Imansyah](https://github.com/tegarimansyah)
 
 ## License
 
