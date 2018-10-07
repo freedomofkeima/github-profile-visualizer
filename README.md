@@ -7,8 +7,10 @@ Available via Github Pages - [https://freedomofkeima.github.io/github-profile-vi
 ## Make Your Own
 
 * Fork this repo.
-* Open your repo setting and scroll down to Github Pages. Change your `source` and save.
-![Enable github pages for this project](pages.png)
+* Open your repo setting and scroll down to Github Pages. Change your `source` and save. Your setup should look like bellow.
+
+![Enable github pages for this project](img/pages.png)
+
 * Clone your repo to your computer and run `sh init.sh github-username github-token`. Read bellow to get your token.
 * Check if it works, visit `https://[your-username].github.io/github-profile-visualizer/`.
 

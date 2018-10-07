@@ -41,17 +41,17 @@
 			username = window.location.host.split('.')[0]
 			document.getElementById("page-title").innerHTML = 'Github Profile Visualizer (<a href="https://github.com/' + username + '">'+ username +'</a>)'
 
-		    followerG = new Dygraph(document.getElementById("follower"), "data/follower.txt", {
+		    followerG = new Dygraph(document.getElementById("follower"), "/data/follower.txt", {
 			    legend: 'always',
 				title: 'Github Follower',
 				fillGraph: true,
 			});
-			followingG =  new Dygraph(document.getElementById("following"), "data/following.txt", {
+			followingG =  new Dygraph(document.getElementById("following"), "/data/following.txt", {
 			    legend: 'always',
 				title: 'Github Following',
 				fillGraph: true,
 			});
-			numRepoG =  new Dygraph(document.getElementById("num_repo"), "data/num_repo.txt", {
+			numRepoG =  new Dygraph(document.getElementById("num_repo"), "/data/num_repo.txt", {
 			    legend: 'always',
 				title: 'Github Number of Repository',
 				fillGraph: true,
