@@ -15,14 +15,26 @@ pushd $CURRENT_DIR
   # Get number of following
   num_following=$(./ok.sh -j list_following ${GITHUB_USER}  | grep "following_url" | wc -l | tr -d ' ')
 
+  # Get total number of Github users
+  num_github_users=$(curl -s https://api.github.com/search/users?q=followers:%3E=0 | jq -r '.total_count')
+
+  # Get total number of Github users which has followers higher than yours
+  num_github_users_followers=$(curl -s https://api.github.com/search/users?q=followers:%3E${num_followers} | jq -r '.total_count')
+
+  # Get total number of Github users which has repositories higher than yours
+  num_github_users_repo=$(curl -s https://api.github.com/search/users?q=repos:%3E${num_repo} | jq -r '.total_count')
+
   # Append to file
   echo "${CURRENT_DATE},${num_repo}" >> data/num_repo.txt
   echo "${CURRENT_DATE},${num_followers}" >> data/follower.txt
   echo "${CURRENT_DATE},${num_following}" >> data/following.txt
+  echo "${CURRENT_DATE},${num_github_users}" >> data/num_github_users.txt
+  echo "${CURRENT_DATE},${num_github_users_followers}" >> data/num_github_users_followers.txt
+  echo "${CURRENT_DATE},${num_github_users_repo}" >> data/num_github_users_repo.txt
 
   # Commit
   git add data/
   git commit -m "${COMMIT_MESSAGE}"
-  git push origin master 
+  git push origin master
 popd
 

@@ -1,6 +1,6 @@
 # Github Profile Visualizer
 
-Visualize Github profile growth (followers, num repo, etc) with daily cron and Github Pages.
+Visualize Github profile growth (followers, num repo, rank based on followers or num repo) with daily cron and Github Pages.
 
 Available via Github Pages - [https://freedomofkeima.github.io/github-profile-visualizer/](https://freedomofkeima.github.io/github-profile-visualizer/).
 
@@ -16,6 +16,7 @@ Github provides a free, static page websites via [Github Pages](https://pages.gi
 ![Enable github pages for this project](img/pages.png)
 
 * Clone your repo to your computer and run `sh init.sh GITHUB_USERNAME GITHUB_TOKEN`. Read the guide below on how to generate your token.
+* Install `jq`. You can either use `sudo yum install jq` or `sudo apt-get install jq`, depending on your distro.
 * Run `sh script.sh` (or `./script.sh`) to update and upload your data. Add cron job integration (explained below) to automatically update your repository everyday.
 * Check if it works, visit `https://[GITHUB_USERNAME].github.io/github-profile-visualizer/`.
 

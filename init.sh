@@ -29,8 +29,12 @@ if [ $# -eq 2 ]; then
     echo "Date,Follower" > data/follower.txt
     echo "Date,Following" > data/following.txt
     echo "Date,Num Repo" > data/num_repo.txt
+    echo "Date,Num Users" > data/num_github_users.txt
+    echo "Date,Num Users" > data/num_github_users_followers.txt
+    echo "Date,Num Users" > data/num_github_users_repo.txt
 
 else
     echo "Please include username and token"
     echo "Usage: $ ./init.sh username token"
 fi
+
