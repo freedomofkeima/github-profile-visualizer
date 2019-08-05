@@ -1,0 +1,28 @@
+.ct-chart {
+  max-width: 400px;
+}
+
+@media (min-width: 576px) {
+  .ct-chart {
+    max-width: 400px;
+  }
+}
+
+@media (min-width: 768px) {
+  .ct-chart {
+    max-width: 300px;
+  }
+}
+
+@media (min-width: 992px) {
+  .ct-chart {
+    max-width: 275px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .ct-chart {
+    max-width: 400px;
+  }
+}
+

@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
 
     <!-- Material Dashboard CSS -->
+    <link rel="stylesheet" href="app.css">
     <link rel="stylesheet" href="material-dashboard.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/dygraph.min.css" />
 
@@ -145,10 +146,10 @@
         username = window.location.host.split(".")[0]
         document.getElementById("page-title").innerHTML = '<a href="https://github.com/' + username + '" class="simple-text logo-normal">' + username + '</a>'
 
-        followerG = new Dygraph(document.getElementById("follower"), url + "data/follower.txt", {
+        followerG = new Dygraph(document.getElementById("follower"), url + "/../data/follower.txt", {
             legend: 'always',
         });
-        followingG = new Dygraph(document.getElementById("following"), url + "data/following.txt", {
+        followingG = new Dygraph(document.getElementById("following"), url + "/../data/following.txt", {
             legend: 'always',
         });
         numRepoG = new Dygraph(document.getElementById("num_repo"), url + "/../data/num_repo.txt", {
