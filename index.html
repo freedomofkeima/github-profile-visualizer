@@ -1,63 +1,162 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<!-- Behavioral Meta Data -->
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
-		<meta charset="UTF-8">
-		<title>Github Profile Visualizer</title>
-		
-		<!-- Styles -->
-		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/dygraph.min.css"/>
-		<link rel="stylesheet" type="text/css" href="app.css"/>
-		
-		<!-- TODO: Favicon -->
-		<link rel="shortcut icon" href="images/favicon.ico" />
-		<meta content="Github Profile Visualizer - Visualize Github profile growth (followers, num repo, etc) with daily cron and Github Pages" name="description">
-		
-		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-		<!--[if lt IE 9]>
-		  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-		  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-		<![endif]-->
-	</head>
-	<body>
-	    <a href="https://github.com/freedomofkeima/github-profile-visualizer"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
-	    <div>
-			<!-- Dynamically change title for page owner -->
-			<h1 class="centered" id="page-title"></h1>
-			<p class="centered">By executing a daily cron on the server-side, we can keep track of various metrics: number of followers, number of following, and number of repositories.</p>
-			
-			<div id="follower" class="centered"></div><br/>
-			<div id="following" class="centered"></div><br/>
-			<div id="num_repo" class="centered"></div><br/>
-		</div>
+<html lang="en">
 
-	    <!-- Scripts -->
-	    <script src="https://cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/dygraph.min.js"></script>
-		<script>
-			url = window.location.href
-			username = window.location.host.split(".")[0]
-			document.getElementById("page-title").innerHTML = 'Github Profile Visualizer (<a href="https://github.com/' + username + '">'+ username +'</a>)'
+<head>
+    <meta charset="utf-8">
+    <!-- Behavioral Meta Data -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <meta charset="UTF-8">
+    <title>Github Profile Visualizer</title>
 
-		    followerG = new Dygraph(document.getElementById("follower"), url+"/data/follower.txt", {
-			    legend: 'always',
-				title: 'Github Follower',
-				fillGraph: true,
-			});
-			followingG =  new Dygraph(document.getElementById("following"), url+"/data/following.txt", {
-			    legend: 'always',
-				title: 'Github Following',
-				fillGraph: true,
-			});
-			numRepoG =  new Dygraph(document.getElementById("num_repo"), url+"/data/num_repo.txt", {
-			    legend: 'always',
-				title: 'Github Number of Repository',
-				fillGraph: true,
-			});
-		</script>
-	</body>
+    <!-- Fonts and icons -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+
+    <!-- Material Dashboard CSS -->
+    <link rel="stylesheet" href="material-dashboard.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/dygraph.min.css" />
+
+    <!-- TODO: Favicon -->
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <meta content="Github Profile Visualizer - Visualize Github profile growth (followers, num repo, etc) with daily cron and Github Pages" name="description">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="wrapper ">
+        <div class="sidebar" data-color="purple" data-background-color="white">
+            <div class="logo" id="page-title"></div>
+            <div class="sidebar-wrapper">
+                <ul class="nav">
+                    <li class="nav-item active ">
+                        <a class="nav-link" href="./index.html">
+                            <i class="material-icons">person</i>
+                            <p>User</p>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="./index.html">
+                            <i class="material-icons">language</i>
+                            <p>Global</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="main-panel">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+                <div class="container-fluid">
+                    <div class="navbar-wrapper">
+                        <a class="navbar-brand" href="#dashboard">Github Profile Visualizer (User)</a>
+                    </div>
+                    <div class="collapse navbar-collapse justify-content-end">
+                        <a class="github-button" href="https://github.com/freedomofkeima/github-profile-visualizer" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star freedomofkeima/github-profile-visualizer on GitHub">Star</a>
+                        <a class="github-button" href="https://github.com/freedomofkeima/github-profile-visualizer/fork" data-icon="octicon-repo-forked" data-size="large" data-show-count="true" aria-label="Fork freedomofkeima/github-profile-visualizer on GitHub">Fork</a>
+                    </div>
+                </div>
+            </nav>
+            <!-- End Navbar -->
+
+            <div class="content">
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card card-chart">
+                                <div class="card-header">
+                                    <div class="ct-chart" id="follower"></div>
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="card-title">Github Follower</h4>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons">access_time</i> updated daily
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="card card-chart">
+                                <div class="card-header">
+                                    <div class="ct-chart" id="following"></div>
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="card-title">Github Following</h4>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons">access_time</i> updated daily
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card card-chart">
+                                <div class="card-header">
+                                    <div class="ct-chart" id="num_repo"></div>
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="card-title">Github Number of Repository</h4>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons">access_time</i> updated daily
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="copyright float-right">
+                        &copy;
+                        <script>
+                            document.write(new Date().getFullYear())
+                        </script>, made with <i class="material-icons">favorite</i> by
+                        <a href="https://github.com/freedomofkeima" target="_blank">Freedomofkeima</a>.
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!--   Core JS Files   -->
+    <script src="https://buttons.github.io/buttons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/dygraph.min.js"></script>
+    <script>
+        url = window.location.href
+        username = window.location.host.split(".")[0]
+        document.getElementById("page-title").innerHTML = '<a href="https://github.com/' + username + '" class="simple-text logo-normal">' + username + '</a>'
+
+        followerG = new Dygraph(document.getElementById("follower"), url + "data/follower.txt", {
+            legend: 'always',
+        });
+        followingG = new Dygraph(document.getElementById("following"), url + "data/following.txt", {
+            legend: 'always',
+        });
+        numRepoG = new Dygraph(document.getElementById("num_repo"), url + "/../data/num_repo.txt", {
+            legend: 'always',
+        });
+    </script>
+
+</body>
+
 </html>
-<!-- Made with ♥ by freedomofkeima - Iskandar Setiadi ©  2018 -->
+<!-- Made with ♥ by freedomofkeima - Iskandar Setiadi © 2018 - 2019 -->
