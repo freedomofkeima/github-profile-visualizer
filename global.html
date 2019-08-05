@@ -36,13 +36,13 @@
             <div class="logo" id="page-title"></div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
-                    <li class="nav-item active ">
+                    <li class="nav-item ">
                         <a class="nav-link" href="./index.html">
                             <i class="material-icons">person</i>
                             <p>User</p>
                         </a>
                     </li>
-                    <li class="nav-item ">
+                    <li class="nav-item active ">
                         <a class="nav-link" href="./global.html">
                             <i class="material-icons">language</i>
                             <p>Global</p>
@@ -57,7 +57,7 @@
             <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
                 <div class="container-fluid">
                     <div class="navbar-wrapper">
-                        <a class="navbar-brand" href="#">Github Profile Visualizer (User)</a>
+                        <a class="navbar-brand" href="#">Github Profile Visualizer (Global)</a>
                     </div>
                     <div class="collapse navbar-collapse justify-content-end">
                         <a class="github-button" href="https://github.com/freedomofkeima/github-profile-visualizer" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star freedomofkeima/github-profile-visualizer on GitHub">Star</a>
@@ -74,26 +74,10 @@
                         <div class="col-md-6">
                             <div class="card card-chart">
                                 <div class="card-header">
-                                    <div class="ct-chart" id="follower"></div>
+                                    <div class="ct-chart" id="num_github_users"></div>
                                 </div>
                                 <div class="card-body">
-                                    <h4 class="card-title">Github Follower</h4>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="stats">
-                                        <i class="material-icons">access_time</i> updated daily
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="card card-chart">
-                                <div class="card-header">
-                                    <div class="ct-chart" id="following"></div>
-                                </div>
-                                <div class="card-body">
-                                    <h4 class="card-title">Github Following</h4>
+                                    <h4 class="card-title">Total Github Users</h4>
                                 </div>
                                 <div class="card-footer">
                                     <div class="stats">
@@ -103,26 +87,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="card card-chart">
-                                <div class="card-header">
-                                    <div class="ct-chart" id="num_repo"></div>
-                                </div>
-                                <div class="card-body">
-                                    <h4 class="card-title">Github Number of Repository</h4>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="stats">
-                                        <i class="material-icons">access_time</i> updated daily
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <footer class="footer">
                 <div class="container-fluid">
@@ -151,14 +115,9 @@
         username = window.location.host.split(".")[0]
         document.getElementById("page-title").innerHTML = '<a href="https://github.com/' + username + '" class="simple-text logo-normal">' + username + '</a>'
 
-        followerG = new Dygraph(document.getElementById("follower"), url + "/../data/follower.txt", {
+        numGithubUsersG = new Dygraph(document.getElementById("num_github_users"), url + "/../data/num_github_users.txt", {
             legend: 'always',
-        });
-        followingG = new Dygraph(document.getElementById("following"), url + "/../data/following.txt", {
-            legend: 'always',
-        });
-        numRepoG = new Dygraph(document.getElementById("num_repo"), url + "/../data/num_repo.txt", {
-            legend: 'always',
+            maxNumberWidth: 12,
         });
     </script>
 
