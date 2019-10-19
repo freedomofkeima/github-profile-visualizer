@@ -28,6 +28,7 @@ if [ $# -eq 2 ]; then
     echo "GITHUB_USER=$1" > data/profile.txt
     echo "Date,Follower" > data/follower.txt
     echo "Date,Following" > data/following.txt
+    echo "Date,Stars" > data/num_stars.txt
     echo "Date,Num Repo" > data/num_repo.txt
     echo "Date,Num Users" > data/num_github_users.txt
     echo "Date,Num Users" > data/num_github_users_followers.txt
