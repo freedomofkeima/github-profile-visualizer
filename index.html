@@ -120,6 +120,22 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-md-6">
+                            <div class="card card-chart">
+                                <div class="card-header">
+                                    <div class="ct-chart" id="num_star"></div>
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="card-title">Github Number of Star</h4>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons">access_time</i> updated daily
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -147,18 +163,30 @@
     <script src="https://buttons.github.io/buttons.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/dygraph.min.js"></script>
     <script>
-        url = window.location.href
+        // url = window.location.href
+		url = "file:///C:/Users/freedomofkeima/Desktop/github-profile-visualizer"
         username = window.location.host.split(".")[0]
         document.getElementById("page-title").innerHTML = '<a href="https://github.com/' + username + '" class="simple-text logo-normal">' + username + '</a>'
 
         followerG = new Dygraph(document.getElementById("follower"), url + "/../data/follower.txt", {
             legend: 'always',
+			includeZero: true,
+			dateWindow: [ Date.parse("2018/10/01 00:00:00"), new Date() ],
         });
         followingG = new Dygraph(document.getElementById("following"), url + "/../data/following.txt", {
             legend: 'always',
+			includeZero: true,
+			dateWindow: [ Date.parse("2018/10/01 00:00:00"), new Date() ],
         });
         numRepoG = new Dygraph(document.getElementById("num_repo"), url + "/../data/num_repo.txt", {
             legend: 'always',
+			includeZero: true,
+			dateWindow: [ Date.parse("2018/10/01 00:00:00"), new Date() ],
+        });
+        numStarG = new Dygraph(document.getElementById("num_star"), url + "/../data/num_stars.txt", {
+            legend: 'always',
+			includeZero: true,
+			dateWindow: [ Date.parse("2018/10/01 00:00:00"), new Date() ],
         });
     </script>
 
