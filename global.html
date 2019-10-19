@@ -118,6 +118,8 @@
         numGithubUsersG = new Dygraph(document.getElementById("num_github_users"), url + "/../data/num_github_users.txt", {
             legend: 'always',
             maxNumberWidth: 12,
+			includeZero: true,
+			dateWindow: [ Date.parse("2019/01/01 00:00:00"), new Date() ],
         });
     </script>
 
