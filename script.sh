@@ -21,10 +21,9 @@ pushd $CURRENT_DIR
   (( num_following+=$(./ok.sh -j list_following ${GITHUB_USER} per_page=100 page=1  | grep "following_url" | wc -l | tr -d ' ') ))
 
   # Get total number of stars
-  stars=0
-  (( stars+=$(./ok.sh -j list_repos ${GITHUB_USER} per_page=100 page=1 | grep -oP '"stargazers_count": \K([0-9]+)') ))
-
   num_stars=0
+  stars=$(./ok.sh -j list_repos ${GITHUB_USER} per_page=100 page=1 | grep -oP '"stargazers_count": \K([0-9]+)')
+
   for value in $stars; do
     (( num_stars += value ))
   done
