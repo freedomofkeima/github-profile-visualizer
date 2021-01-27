@@ -2216,6 +2216,7 @@ list_followers() {
     shift 1
 
     _opts_filter "$@"
+    _opts_qs "$@"
 
     if [ -n "$user" ] ; then
         url="/users/${user}/followers"
@@ -2223,7 +2224,7 @@ list_followers() {
         url='/user/followers'
     fi
 
-    _get "${url}" | _filter_json "${_filter}"
+    _get "${url}${qs}" | _filter_json "${_filter}"
 }
 
 list_following() {
@@ -2248,6 +2249,7 @@ list_following() {
     shift 1
 
     _opts_filter "$@"
+    _opts_qs "$@"
 
     if [ -n "$user" ] ; then
         url="/users/${user}/following"
@@ -2255,7 +2257,7 @@ list_following() {
         url='/user/following'
     fi
 
-    _get "${url}" | _filter_json "${_filter}"
+    _get "${url}${qs}" | _filter_json "${_filter}"
 }
 
 __main "$@"

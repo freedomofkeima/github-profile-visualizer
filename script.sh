@@ -7,16 +7,22 @@ source data/profile.txt
 
 pushd $CURRENT_DIR
   # Get number of repositories
-  num_repo=$(./ok.sh -j list_repos ${GITHUB_USER} | grep "full_name" | wc -l | tr -d ' ')
+  num_repo=0
+  (( num_repo+=$(./ok.sh -j list_repos ${GITHUB_USER} per_page=100 page=1 | grep "full_name" | wc -l | tr -d ' ') ))
 
   #Get number of followers
-  num_followers=$(./ok.sh -j list_followers ${GITHUB_USER} | grep "followers_url" | wc -l | tr -d ' ')
+  num_followers=0
+  (( num_followers+=$(./ok.sh -j list_followers ${GITHUB_USER} per_page=100 page=1 | grep "followers_url" | wc -l | tr -d ' ') ))
+  (( num_followers+=$(./ok.sh -j list_followers ${GITHUB_USER} per_page=100 page=2 | grep "followers_url" | wc -l | tr -d ' ') ))
+  (( num_followers+=$(./ok.sh -j list_followers ${GITHUB_USER} per_page=100 page=3 | grep "followers_url" | wc -l | tr -d ' ') ))
 
   # Get number of following
-  num_following=$(./ok.sh -j list_following ${GITHUB_USER}  | grep "following_url" | wc -l | tr -d ' ')
+  num_following=0
+  (( num_following+=$(./ok.sh -j list_following ${GITHUB_USER} per_page=100 page=1  | grep "following_url" | wc -l | tr -d ' ') ))
 
   # Get total number of stars
-  stars=$(./ok.sh -j list_repos ${GITHUB_USER} | grep -oP '"stargazers_count": \K([0-9]+)')
+  stars=0
+  (( stars+=$(./ok.sh -j list_repos ${GITHUB_USER} per_page=100 page=1 | grep -oP '"stargazers_count": \K([0-9]+)') ))
 
   num_stars=0
   for value in $stars; do
