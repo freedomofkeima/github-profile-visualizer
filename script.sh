@@ -8,24 +8,46 @@ source data/profile.txt
 pushd $CURRENT_DIR
   # Get number of repositories
   num_repo=0
-  (( num_repo+=$(./ok.sh -j list_repos ${GITHUB_USER} per_page=100 page=1 | grep "full_name" | wc -l | tr -d ' ') ))
+  page=1
+  while : ; do
+    temp_num_repo=$(./ok.sh -j list_repos ${GITHUB_USER} per_page=100 page=${page} | grep "full_name" | wc -l | tr -d ' ')
+    [[ temp_num_repo -ne "0" ]] || break
+    (( num_repo += temp_num_repo ))
+    (( page += 1 ))
+  done
 
   #Get number of followers
   num_followers=0
-  (( num_followers+=$(./ok.sh -j list_followers ${GITHUB_USER} per_page=100 page=1 | grep "followers_url" | wc -l | tr -d ' ') ))
-  (( num_followers+=$(./ok.sh -j list_followers ${GITHUB_USER} per_page=100 page=2 | grep "followers_url" | wc -l | tr -d ' ') ))
-  (( num_followers+=$(./ok.sh -j list_followers ${GITHUB_USER} per_page=100 page=3 | grep "followers_url" | wc -l | tr -d ' ') ))
+  page=1
+  while : ; do
+    temp_num_followers=$(./ok.sh -j list_followers ${GITHUB_USER} per_page=100 page=${page} | grep "followers_url" | wc -l | tr -d ' ')
+    [[ temp_num_followers -ne "0" ]] || break
+    (( num_followers += temp_num_followers ))
+    (( page += 1 ))
+  done
 
   # Get number of following
   num_following=0
-  (( num_following+=$(./ok.sh -j list_following ${GITHUB_USER} per_page=100 page=1  | grep "following_url" | wc -l | tr -d ' ') ))
+  page=1
+  while : ; do
+    temp_num_following=$(./ok.sh -j list_following ${GITHUB_USER} per_page=100 page=${page}  | grep "following_url" | wc -l | tr -d ' ')
+    [[ temp_num_following -ne "0" ]] || break
+    (( num_following += temp_num_following ))
+    (( page += 1 ))
+  done
 
   # Get total number of stars
   num_stars=0
-  stars=$(./ok.sh -j list_repos ${GITHUB_USER} per_page=100 page=1 | grep -oP '"stargazers_count": \K([0-9]+)')
-
-  for value in $stars; do
-    (( num_stars += value ))
+  page=1
+  while : ; do
+    temp_num_stars=0
+    stars=$(./ok.sh -j list_repos ${GITHUB_USER} per_page=100 page=${page} | grep -oP '"stargazers_count": \K([0-9]+)')
+    for value in $stars; do
+      (( temp_num_stars += value ))
+    done
+    [[ temp_num_stars -ne "0" ]] || break
+    (( num_stars += temp_num_stars ))
+    (( page += 1 ))
   done
 
   # Get total number of Github users
